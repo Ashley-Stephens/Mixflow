@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spoofify Home</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <h1 class="brand__name">Spoofify</h1>
+      </div>
+
+      <nav class="menu">
+        <p class="menu__label">Menu</p>
+        <ul class="menu__list">
+          <li class="menu__item menu__item--active">Home</li>
+          <li class="menu__item">Your Shuffle</li>
+          <li class="menu__item">Listening Habits</li>
+          <li class="menu__item">Other Ideas</li>
+        </ul>
+      </nav>
+
+      <div class="section">
+        <p class="menu__label">
+          Your Playlists
+          <button class="plain-btn" id="btn-add-playlist" aria-label="Add playlist">+</button>
+        </p>
+
+        <ul class="playlist-nav" id="sidebar-playlists">
+          <!-- fallback example, will get replaced by JS -->
+          <li class="playlist-nav__item playlist-nav__item--active">Playlist Name 1</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <p class="menu__label">General</p>
+        <ul class="menu__list">
+          <li class="menu__item">Settings</li>
+          <li class="menu__item">Account</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main" aria-label="Home content">
+      <header class="topbar">
+        <input class="search" type="search" placeholder="Search" aria-label="Search songs or artists" />
+      </header>
+
+      <!-- Recently Played Playlists Section -->
+      <section class="row">
+        <h2 class="row__title">Recently Played Playlists</h2>
+        <div class="card-row" id="recent-playlists">
+          <!-- fallback example, JS will replace -->
+          <div class="card">
+            <div class="card__cover"></div>
+            <div class="card__label">Gym Playlist</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row">
+        <h2 class="row__title">Recently Played Artists</h2>
+        <div class="card-row" id="recent-artists">
+          <!-- fallback example -->
+          <div class="card">
+            <div class="card__cover"></div>
+            <div class="card__label">Artist 1</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Suggested For You -->
+      <section class="row row--accent">
+        <h2 class="row__title">Suggested For You</h2>
+        <div class="card-row" id="suggested-songs">
+          <div class="card placeholder-card">
+            <div class="card__cover placeholder-img"></div>
+            <div class="card__label">Loading Song 1</div>
+          </div>
+          <div class="card placeholder-card">
+            <div class="card__cover placeholder-img"></div>
+            <div class="card__label">Loading Song 2</div>
+          </div>
+          <div class="card placeholder-card">
+            <div class="card__cover placeholder-img"></div>
+            <div class="card__label">Loading Song 3</div>
+          </div>
+          <div class="card placeholder-card">
+            <div class="card__cover placeholder-img"></div>
+            <div class="card__label">Loading Song 4</div>
+          </div>
+          <div class="card placeholder-card">
+            <div class="card__cover placeholder-img"></div>
+            <div class="card__label">Loading Song 5</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="right" aria-label="Right sidebar">
+      <div class="right__spacer"></div>
+      <div class="now-playing" id="now-playing-card"></div>
+      <section class="queue">
+        <h3 class="queue__title">Queue</h3>
+        <ul class="queue__list" id="queue-list">
+          <!-- fallback items (will be replaced by JS) -->
+          <li class="queue__item"><span class="thumb"></span>
+            <div><b>Song 1</b><br><small>Artist A</small></div>
+          </li>
+          <li class="queue__item"><span class="thumb"></span>
+            <div><b>Song 2</b><br><small>Artist B</small></div>
+          </li>
+          <li class="queue__item"><span class="thumb"></span>
+            <div><b>Song 3</b><br><small>Artist C</small></div>
+          </li>
+        </ul>
+
+      </section>
+    </aside>
+
+  </div>
+
+
+  <!-- AUTH OVERLAY / MODAL -->
+   <div class="auth-overlay" id="auth-overlay"></div>
+   <div class="auth-modal" id="auth-modal" aria-modal="true" role="dialog">
+      <div class="auth-header">
+         <button class="auth-tab auth-tab--active" id="auth-tab-login">Log In</button>
+         <button class="auth-tab" id="auth-tab-signup">Sign Up</button>
+         <button class="auth-close" id="auth-close" aria-label="Close">×</button>
+      </div>
+
+      <div class="auth-body">
+         <label class="auth-label">Email</label>
+         <input id="email" type="email" class="auth-input" placeholder="Enter your email" />
+
+         <label class="auth-label">Password</label>
+         <input id="password" type="password" class="auth-input" placeholder="Enter your password" />
+
+         <div id="confirm-wrap" style="display:none;">
+            <label class="auth-label">Confirm Password</label>
+            <input id="password-confirm" type="password" class="auth-input" placeholder="Confirm your password" />
+            <p class="auth-error" id="auth-error" style="display:none;">Passwords do not match</p>
+         </div>
+
+         <button class="auth-primary" id="signin">Log In</button>
+         <button class="auth-primary" id="signup" style="display:none;">Sign Up</button>
+      </div>
+
+      <div class="auth-footer">
+         <button class="auth-close auth-ghost" id="auth-guest">Continue as Guest</button>
+      </div>
+   </div>
+
+
+
+   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+   <script src="../js/main.js"></script>
+   <script src="../../script.js"></script>
+</body>
+</html>
